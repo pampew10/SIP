@@ -14,15 +14,34 @@ lines = 0
 lines2 = 0
 for line in nmapoutput.splitlines():
     lines = lines + 1
-    if lines >= 6:
-        print(line)
-        nmapoutputarray.append(line)
+    #if lines >= 6:
+    if "port" in line:
+        if "state" in line:
+            if "service" in line:
+                correctline = lines
+    try:
+        correctline
+    except:
+        print("not defined")
+    else:
+        if lines >= correctline:
+            print(line)
+            nmapoutputarray.append(line)
 
 for line in nmapoutput2.splitlines():
     lines2 = lines2 + 1
-    if lines2 >= 6:
-        print(line)
-        nmapoutputarray2.append(line)
+    if "port" in line:
+        if "state" in line:
+            if "service" in line:
+                correctline2 = lines2  
+    try:
+        correctline2
+    except:
+        print("not defined")
+    else:
+        if lines >= correctline2:
+            print(line)
+            nmapoutputarray2.append(line)
 
 for i in nmapoutputarray:
     if i in nmapoutputarray2:
